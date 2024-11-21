@@ -14,9 +14,25 @@ string[] names = {
 // After last element should be ".".
 void PrintGroups(string[] t, int perLine)
 {
+    int i = 1;
+    int tableLength = t.Length;
 
-    // Write required code.
+    foreach (string name in t)
+    {   
+        string ending = i != tableLength ? "," : ".";
 
+        Console.Write(name + ending);
+
+        if (i % perLine == 0)
+        {
+            Console.Write("\n");
+        } else
+        {
+            Console.Write(" ");
+        }
+
+        i++;
+    }
 }
 
 
@@ -27,11 +43,35 @@ void PrintGroups(string[] t, int perLine)
 
 void PrintColumns(string[] t, int perLine, int width)
 {
+    int i = 1;
 
-    // Write required code.
+    foreach (string name in t)
+    {
+        string newName = name;
 
+        if (name.Length > width)
+        {
+            newName = name.Substring(0, width);
+        }
+        else
+        {
+            newName = name.PadRight(width);
+        }
+
+        Console.Write(newName);
+
+        if (i % perLine != 0)
+        {
+            Console.Write("| ");
+        }
+        else
+        {
+            Console.Write("\n");
+        }
+
+        i++;
+    }
 }
-
 
 // Test how your functions work. 
 // You can temprary comment some lines not needed for current testing.
@@ -106,7 +146,7 @@ Aurora         | Maleficent     | Rapunzel       | Flynn Rider    | Elsa
 Anna           | Olaf           | Moana          | Maui           | Hercules
 */
 
-Console.WriteLine("\n\nPrintColumns(names, 7, 10):\n");
+Console.WriteLine("\n\nPrintColumns(names, 8, 10):\n");
 PrintColumns(names, 8, 10);
 /*
 Mickey Mou| Minnie Mou| Donald Duc| Goofy     | Pluto     | Daisy Duck| Simba     | Nala
